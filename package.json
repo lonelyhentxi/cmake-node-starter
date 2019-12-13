@@ -1,0 +1,22 @@
+{
+  "name": "cmake_node_starter",
+  "version": "0.0.1",
+  "description": "starter for node addons development with bare cmake",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "cmake",
+    "addon",
+    "plugin",
+    "node",
+    "electron",
+    "napi"
+  ],
+  "author": "lonelyhentai <master@evernightfireworks.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "node-addon-api": "^2.0.0"
+  }
+}

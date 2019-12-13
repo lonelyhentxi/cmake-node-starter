@@ -1,0 +1,6 @@
+build/
+out/
+cmake-build-[Dd]ebug/
+cmake-build-[Rr]elease/
+node_modules/
+package-lock.json
