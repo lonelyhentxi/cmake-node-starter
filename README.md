@@ -10,7 +10,7 @@ Please ensure you have installed:
 
 - node
 - npm
-- node-gyp (globally)
+- node-gyp (only used to download nodejs source code)
 - cmake
 - c++ build toolchains
     - nmake + msvc (windows)
