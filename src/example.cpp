@@ -1,9 +1,9 @@
-#include "lib.hpp"
+#include "example.hpp"
 
 Napi::Object Example::Init(Napi::Env env, Napi::Object exports) {
     Napi::Function func = DefineClass(env, "Example", {
-            InstanceMethod<&Example::GetValue>("GetValue"),
-            InstanceMethod<&Example::SetValue>("SetValue")
+            InstanceMethod("GetValue", &Example::GetValue),
+            InstanceMethod("SetValue", &Example::SetValue)
     });
     constructor = Napi::Persistent(func);
     constructor.SuppressDestruct();
@@ -17,6 +17,8 @@ Example::Example(const Napi::CallbackInfo &info): Napi::ObjectWrap<Example>(info
     this->_value = value.DoubleValue();
 }
 
+Napi::FunctionReference Example::constructor;
+
 Napi::Value Example::GetValue(const Napi::CallbackInfo &info){
     Napi::Env env = info.Env();
     return Napi::Number::New(env, this->_value);
@@ -29,3 +31,10 @@ Napi::Value Example::SetValue(const Napi::CallbackInfo &info) {
     this->_value = value.DoubleValue();
     return this->GetValue(info);
 }
+
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+    Example::Init(env, exports);
+    return exports;
+}
+
+NODE_API_MODULE(example , Init);
