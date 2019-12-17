@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.8)
-set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_CXX_STANDARD 17)
 project(cmake_node_starter)
+
+set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
 
 ## start detect vcpkg (optional)
 ## If at local, this variable will can be set in CMakeSettings.json or at compile-time
@@ -48,13 +55,14 @@ string(REPLACE "\"" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 set(NODE_ADDON_API_INCLUDE_PATH "${NODE_ADDON_API_DIR}" "${NODE_ADDON_API_DIR}/src")
 # end detect N-API
 
+set(EXAMPLE_ADDON_NAME "example")
 file(GLOB_RECURSE SOURCE_FILES src/*.hpp src/*.cpp)
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
-set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
+add_library(${EXAMPLE_ADDON_NAME} SHARED ${SOURCE_FILES})
+set_target_properties(${EXAMPLE_ADDON_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(${EXAMPLE_ADDON_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${NODE_INCLUDE_PATH} ${NODE_ADDON_API_INCLUDE_PATH})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${NODE_LIBRARIES})
+target_include_directories(${EXAMPLE_ADDON_NAME} PRIVATE ${NODE_INCLUDE_PATH} ${NODE_ADDON_API_INCLUDE_PATH})
+target_link_libraries(${EXAMPLE_ADDON_NAME} PRIVATE ${NODE_LIBRARIES})
 
 ## for cmakelists debugging, show all variables
 # get_cmake_property(_variableNames VARIABLES)
@@ -65,5 +73,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${NODE_LIBRARIES})
 
 ## vcpkg usage example
 # find_package(MPI REQUIRED)
-# target_include_directories(${PROJECT_NAME} ${MPI_INCLUDE_PATH})
-# target_link_libraries(${PROJECT_NAME} ${MPI_LIBRARIES})
+# target_include_directories(${EXAMPLE_ADDON_NAME} PRIVATE ${MPI_INCLUDE_PATH})
+# target_link_libraries(${EXAMPLE_ADDON_NAME} PRIVATE ${MPI_LIBRARIES})

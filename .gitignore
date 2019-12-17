@@ -639,3 +639,4 @@ fabric.properties
 *.app
 
 package-lock.json
+build/
