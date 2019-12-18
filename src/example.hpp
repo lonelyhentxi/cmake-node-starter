@@ -1,5 +1,4 @@
 #pragma once
-#include <cstdint>
 #include "napi.h"
 
 class Example: public Napi::ObjectWrap<Example> {

@@ -55,14 +55,14 @@ string(REPLACE "\"" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 set(NODE_ADDON_API_INCLUDE_PATH "${NODE_ADDON_API_DIR}" "${NODE_ADDON_API_DIR}/src")
 # end detect N-API
 
-set(EXAMPLE_ADDON_NAME "example")
+set(ADDON_NAME "example")
 file(GLOB_RECURSE SOURCE_FILES src/*.hpp src/*.cpp)
-add_library(${EXAMPLE_ADDON_NAME} SHARED ${SOURCE_FILES})
-set_target_properties(${EXAMPLE_ADDON_NAME} PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties(${EXAMPLE_ADDON_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
+add_library(${ADDON_NAME} SHARED ${SOURCE_FILES})
+set_target_properties(${ADDON_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(${ADDON_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
-target_include_directories(${EXAMPLE_ADDON_NAME} PRIVATE ${NODE_INCLUDE_PATH} ${NODE_ADDON_API_INCLUDE_PATH})
-target_link_libraries(${EXAMPLE_ADDON_NAME} PRIVATE ${NODE_LIBRARIES})
+target_include_directories(${ADDON_NAME} PRIVATE ${NODE_INCLUDE_PATH} ${NODE_ADDON_API_INCLUDE_PATH})
+target_link_libraries(${ADDON_NAME} PRIVATE ${NODE_LIBRARIES})
 
 ## for cmakelists debugging, show all variables
 # get_cmake_property(_variableNames VARIABLES)
@@ -73,5 +73,5 @@ target_link_libraries(${EXAMPLE_ADDON_NAME} PRIVATE ${NODE_LIBRARIES})
 
 ## vcpkg usage example
 # find_package(MPI REQUIRED)
-# target_include_directories(${EXAMPLE_ADDON_NAME} PRIVATE ${MPI_INCLUDE_PATH})
-# target_link_libraries(${EXAMPLE_ADDON_NAME} PRIVATE ${MPI_LIBRARIES})
+# target_include_directories(${ADDON_NAME} PRIVATE ${MPI_INCLUDE_PATH})
+# target_link_libraries(${ADDON_NAME} PRIVATE ${MPI_LIBRARIES})
