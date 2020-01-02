@@ -2,7 +2,7 @@
 
 ![repo-size](https://img.shields.io/github/repo-size/lonelyhentai/cmake-node-starter) ![license](https://img.shields.io/github/license/lonelyhentai/cmake-node-starter)
 
-Starter for node addons development with bare `cmake` instead of `node-gyp` or `cmake-js`.
+Starter for node addons development with bare `cmake` instead of `node-gyp` or `cmake-js`, and it support compile caching via sccache or ccache.
 
 **❗️ RISK: Now at very early development stage**
 
@@ -155,6 +155,12 @@ And add type info in `index.js`:
 const { Example } = require('bindings')('example.node');
 // ...
 ```
+
+# FAQ
+
+1. SCCACHE does not works when I use MSVC?
+
+This is a bug of sccache, please switch to clang with cl (clang+msvc).
 
 # Authors
 
