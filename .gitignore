@@ -638,5 +638,7 @@ fabric.properties
 *.out
 *.app
 
+### Custom
 package-lock.json
 build/
+build-release/

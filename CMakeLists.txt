@@ -20,6 +20,17 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
 
 # start detect node
 # get home path
+
+find_program(SCCACHE_FOUND sccache)
+find_program(CCACHE_FOUND ccache)
+if(DEFINED SCCACHE_FOUND)
+    message(STATUS "Using sccache")
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE sccache)
+elseif(DEFINED CCACHE_FOUND)
+    message(STATUS "Using ccache")
+	set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+endif()
+
 if (WIN32)
     set(HOME "$ENV{UserProfile}")
 else ()

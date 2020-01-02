@@ -99,6 +99,8 @@ CMake configure and generate command format:
 For example:
 
 ```bash
+export CC=cl
+export CXX=cl
 cmake -DCMAKE_BUILD_TYPE=Debug -G "Ninja" -B./build -S.
 ```
 

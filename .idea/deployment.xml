@@ -2,6 +2,16 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
+      <paths name="ENFW-D1IN (6ae9a2f1-2d6e-4001-a209-6800c6279254)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.Ha4z4TkfSo" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
       <paths name="WSL (19adb9db-4168-4263-880b-5b7bd722e2b4)">
         <serverdata>
           <mappings>
